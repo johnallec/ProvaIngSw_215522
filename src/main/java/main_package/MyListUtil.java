@@ -7,31 +7,21 @@ import java.util.Random;
 
 public class MyListUtil {
 	
-	private List<Integer> list;
-	
-	public MyListUtil() {
-		List<Integer> tmp = new ArrayList<Integer>();
-		Random r = new Random();
-		for(int i=0; i<10; ++i) {
-			int n = r.nextInt(10)+1;
-			
-			if(n % 2 == 0) tmp.add(n);
-			else tmp.add(i+1);
+	public Object[] sort(Object[] l, int n) {
+		ArrayList<Integer> tmp = new ArrayList<Integer>();
+		for(int i=0; i<l.length; ++i) {
+			tmp.add((Integer) l[i]);
 		}
-		this.list = tmp;
-	}
-	
-	public MyListUtil(List<Integer> list) {
-		this.list = list;
-	}
-	
-	public void sort(int n) {
 		if(n==0) {
-			Collections.sort(list);
+			Collections.sort(tmp);
 		}
 		else if(n==1) {
-			Collections.sort(list);
-			Collections.reverse(list);
+			Collections.sort(tmp);
+			Collections.reverse(tmp);
 		}
+		for(int i=0; i<l.length; ++i) {
+			l[i]=tmp.get(i);
+		}
+		return l;
 	}
 }
